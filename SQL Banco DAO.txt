@@ -1,0 +1,35 @@
+CREATE TABLE curso (
+    idcurso SERIAL,
+    nomeCurso varchar(40),
+    PRIMARY KEY (idcurso)
+);
+
+INSERT INTO curso (nomeCurso) VALUES ('Sistema de Informação');
+INSERT INTO curso (nomeCurso) VALUES ('Engenharia Civil');
+
+CREATE TABLE aluno (
+    idAluno SERIAL,
+    nome varchar(40),
+    sexo varchar(10),
+    dt_nasc date,
+    nota numeric,
+    PRIMARY KEY (idAluno)
+);
+
+INSERT INTO aluno (nome, sexo, dt_nasc, nota) VALUES ('Dory', 'Masculino', '1976-03-31', 10);
+INSERT INTO aluno (nome, sexo, dt_nasc, nota) VALUES ('Caroline', 'Feminino', '2000-12-24', 7);
+INSERT INTO aluno (nome, sexo, dt_nasc, nota) VALUES ('Isabelle', 'Feminino', '2010-01-01', 8.5);
+INSERT INTO aluno (nome, sexo, dt_nasc, nota) VALUES ('Ana Laura', 'Feminino', '2005-05-05', 7.3);
+INSERT INTO aluno (nome, sexo, dt_nasc, nota) VALUES ('João', 'Masculino', '2000-01-01', 9.5);
+
+
+CREATE TABLE disciplina
+(
+    iddisciplina SERIAL,
+    nomedisciplina varchar(60) NOT NULL,
+    cargahoraria integer NOT NULL,
+    PRIMARY KEY (iddisciplina)
+);
+
+INSERT INTO disciplina (nomedisciplina, cargahoraria) VALUES ('Banco de Dados', 54);
+INSERT INTO disciplina (nomedisciplina, cargahoraria) VALUES ('POO II', 72);
