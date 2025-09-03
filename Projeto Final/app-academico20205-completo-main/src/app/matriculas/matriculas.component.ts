@@ -82,14 +82,14 @@ export class MatriculasComponent implements OnInit {
     }
 
     this.matriculaService.matricularAluno(this.aluno.idaluno!, this.cursoSelecionado).subscribe({
-      next: (response) => {
-        alert(response);
+      next: (matricula) => {
+        alert(`Aluno ${matricula.nomeAluno} matriculado com sucesso no curso ${matricula.nomeCurso}!`);
         this.carregarMatriculas(this.aluno!.idaluno!);
         this.cursoSelecionado = null;
       },
       error: (error) => {
-        console.error('Erro ao matricular:', error);
-        alert('Erro ao matricular aluno: ' + (error.error || 'Erro desconhecido'));
+        console.error('Erro ao matricular aluno:', error);
+        alert('Erro ao matricular aluno: ' + (error.message || 'Erro desconhecido'));
       }
     });
   }
@@ -99,13 +99,13 @@ export class MatriculasComponent implements OnInit {
 
     if (confirm('Deseja realmente remover esta matrícula?')) {
       this.matriculaService.removerMatricula(this.aluno.idaluno!, idCurso).subscribe({
-        next: (response) => {
-          alert(response);
+        next: () => {
+          alert('Matrícula removida com sucesso!');
           this.carregarMatriculas(this.aluno!.idaluno!);
         },
         error: (error) => {
           console.error('Erro ao remover matrícula:', error);
-          alert('Erro ao remover matrícula: ' + (error.error || 'Erro desconhecido'));
+          alert('Erro ao remover matrícula: ' + (error.message || 'Erro desconhecido'));
         }
       });
     }

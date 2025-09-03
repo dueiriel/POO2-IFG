@@ -19,20 +19,14 @@ export class MatriculaService {
   }
 
   // Matricular aluno em curso
-  matricularAluno(idAluno: number, idCurso: number): Observable<string> {
-    return this.httpClient.post(
-      `${this.baseUrl}/aluno/${idAluno}/curso/${idCurso}`, 
-      {}, 
-      { responseType: 'text' }
-    );
+  matricularAluno(idAluno: number, idCurso: number): Observable<Matricula> {
+    const matriculaData = { idAluno: idAluno, idCurso: idCurso };
+    return this.httpClient.post<Matricula>(this.baseUrl, matriculaData);
   }
 
   // Remover matrícula
-  removerMatricula(idAluno: number, idCurso: number): Observable<string> {
-    return this.httpClient.delete(
-      `${this.baseUrl}/aluno/${idAluno}/curso/${idCurso}`, 
-      { responseType: 'text' }
-    );
+  removerMatricula(idAluno: number, idCurso: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/${idAluno}/${idCurso}`);
   }
 
   // Listar matrículas por aluno
