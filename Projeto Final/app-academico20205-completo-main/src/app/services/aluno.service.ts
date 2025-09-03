@@ -1,0 +1,38 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { Aluno } from '../models/aluno.model';
+import { Page } from '../models/page.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AlunoService {
+
+  //api RestFull JAVA Spring Boot
+  private baseUrl = 'http://localhost:8080/academico/alunos';
+
+  constructor(private httpClient: HttpClient) { }
+
+  getAlunos(page: number = 0, size: number = 10, search: string = ''): Observable<Page<Aluno>> {
+    const params: any = { page: page.toString(), size: size.toString() };
+    if (search) {  params.search = search; }
+    return this.httpClient.get<Page<Aluno>>(this.baseUrl, { params });
+  }
+
+  getAlunoById(id: number): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/${id}`);
+  }
+
+  createAluno(aluno: Object) {
+    return this.httpClient.post(`${this.baseUrl}`, aluno);
+  }
+  updateAluno(id: number, aluno: Object) {
+    return this.httpClient.put(`${this.baseUrl}/${id}`, aluno);
+  }
+  deleteAluno(id: number) {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`);
+  }
+
+}

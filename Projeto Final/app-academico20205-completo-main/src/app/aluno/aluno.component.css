@@ -1,0 +1,40 @@
+.container {
+  padding: 20px;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.btn {
+  margin: 2px;
+  min-width: 80px;
+}
+
+.btn-sm {
+  min-width: 70px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  max-width: 400px;
+}
+
+.pagination {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination-info {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #6c757d;
+}

@@ -1,0 +1,44 @@
+# Backend - Spring Boot
+backend-academico2025-completo-main/target/
+backend-academico2025-completo-main/*.jar
+backend-academico2025-completo-main/*.war
+backend-academico2025-completo-main/*.ear
+backend-academico2025-completo-main/*.class
+backend-academico2025-completo-main/.mvn/wrapper/maven-wrapper.jar
+backend-academico2025-completo-main/mvnw
+backend-academico2025-completo-main/mvnw.cmd
+backend-academico2025-completo-main/app.log
+backend-academico2025-completo-main/nohup.out
+
+# Frontend - Angular/Node
+app-academico20205-completo-main/node_modules/
+app-academico20205-completo-main/dist/
+app-academico20205-completo-main/.angular/
+app-academico20205-completo-main/npm-debug.log*
+app-academico20205-completo-main/yarn-debug.log*
+app-academico20205-completo-main/yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp

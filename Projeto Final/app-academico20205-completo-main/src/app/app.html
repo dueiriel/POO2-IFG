@@ -1,0 +1,26 @@
+<div class="app-container">
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a routerLink="home" class="nav-link">🏠 Home</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="curso" class="nav-link">📚 Curso</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="aluno" class="nav-link">👤 Aluno</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="matriculas-geral" class="nav-link">🎓 Matrículas</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="content-area">
+        <router-outlet></router-outlet>
+    </main>
+</div>

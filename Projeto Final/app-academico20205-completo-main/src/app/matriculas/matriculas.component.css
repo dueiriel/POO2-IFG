@@ -1,0 +1,32 @@
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: none;
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.badge {
+  font-size: 0.9em;
+}
+
+.table-responsive {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.btn {
+  border-radius: 6px;
+}
+
+.text-muted {
+  font-style: italic;
+}
+
+.fa-graduation-cap {
+  color: #6c757d;
+}

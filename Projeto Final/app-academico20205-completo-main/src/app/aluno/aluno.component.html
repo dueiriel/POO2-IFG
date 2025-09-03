@@ -1,0 +1,100 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Lista de Alunos</h2>
+      
+      <!-- Barra de pesquisa e botão novo -->
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Pesquisar por nome..." 
+                   [(ngModel)]="searchTerm" (keyup.enter)="onSearch()">
+            <button class="btn btn-outline-secondary" type="button" (click)="onSearch()">
+              Pesquisar
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4 text-end">
+          <button type="button" class="btn btn-primary" (click)="novoAluno()">
+            Novo Aluno
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabela de alunos -->
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Sexo</th>
+              <th scope="col">Data de Nascimento</th>
+              <th scope="col">Cursos Matriculados</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let aluno of alunos">
+              <td>{{ aluno.idaluno }}</td>
+              <td>{{ aluno.nome }}</td>
+              <td>{{ aluno.sexo }}</td>
+              <td>{{ formatarData(aluno.dt_nasc) }}</td>
+              <td>
+                <div *ngIf="aluno.cursos && aluno.cursos.length > 0; else semCursos">
+                  <span *ngFor="let curso of aluno.cursos; let last = last" 
+                        class="badge bg-primary me-1">
+                    {{ curso.nomeCurso }}
+                  </span>
+                  <small class="text-muted d-block mt-1">
+                    ({{ aluno.cursos.length }} curso{{ aluno.cursos.length > 1 ? 's' : '' }})
+                  </small>
+                </div>
+                <ng-template #semCursos>
+                  <span class="text-muted fst-italic">Nenhum curso</span>
+                </ng-template>
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-info me-1" 
+                        (click)="gerenciarMatriculas(aluno.idaluno)"
+                        title="Gerenciar Matrículas">
+                  📚
+                </button>
+                <button type="button" class="btn btn-sm btn-warning me-1" 
+                        (click)="editarAluno(aluno.idaluno)"
+                        title="Editar Aluno">
+                  ✏️
+                </button>
+                <button type="button" class="btn btn-sm btn-danger" 
+                        (click)="excluirAluno(aluno.idaluno)"
+                        title="Excluir Aluno">
+                  ❌
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
+      <nav aria-label="Navegação da página" *ngIf="totalPages > 1">
+        <ngb-pagination 
+          [(page)]="currentPage" 
+          [pageSize]="pageSize" 
+          [collectionSize]="totalElements"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="onPageChange($event - 1)">
+        </ngb-pagination>
+      </nav>
+
+      <!-- Informações da paginação -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="text-muted">
+          Mostrando {{ alunos.length }} de {{ totalElements }} registros
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
