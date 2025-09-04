@@ -26,7 +26,7 @@ export class MatriculaService {
 
   // Remover matrícula
   removerMatricula(idAluno: number, idCurso: number): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/${idAluno}/${idCurso}`);
+    return this.httpClient.delete(`${this.baseUrl}/aluno/${idAluno}/curso/${idCurso}`, { responseType: 'text' });
   }
 
   // Listar matrículas por aluno

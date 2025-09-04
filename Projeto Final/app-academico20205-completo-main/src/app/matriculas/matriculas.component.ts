@@ -99,8 +99,8 @@ export class MatriculasComponent implements OnInit {
 
     if (confirm('Deseja realmente remover esta matrícula?')) {
       this.matriculaService.removerMatricula(this.aluno.idaluno!, idCurso).subscribe({
-        next: () => {
-          alert('Matrícula removida com sucesso!');
+        next: (response) => {
+          alert(response);
           this.carregarMatriculas(this.aluno!.idaluno!);
         },
         error: (error) => {
